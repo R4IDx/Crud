@@ -1,5 +1,19 @@
 import { Pool } from 'pg';
 
+
+const API_TOKEN = process.env.API_TOKEN;
+
+export default async function handler(req, res) {
+  // Authorisierung prüfen
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (token !== API_TOKEN) {
+    return res.status(401).json({ message: 'Ungültiger API-Schlüssel' });
+  }
+
+
+
 // Pool-Konfiguration mit deinen Verbindungsdaten
 const pool = new Pool({
   user: 'default',
@@ -54,4 +68,5 @@ export default async function handler(req, res) {
   } else {
     res.status(405).json({ message: 'Methode nicht erlaubt' });
   }
+}
 }
