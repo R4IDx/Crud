@@ -1,7 +1,4 @@
 import { Pool } from 'pg';
-const API_TOKEN = process.env.API_TOKEN;
-
-
 
 // Pool-Konfiguration mit deinen Verbindungsdaten
 const pool = new Pool({
@@ -43,13 +40,13 @@ const addDishToDB = async (name, zutat1, zutat2, zutat3) => {
 };
 
 export default async function handler(req, res) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+  const API_TOKEN = process.env.API_TOKEN;
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
 
-    if (token !== API_TOKEN) {
-        return res.status(401).json({ message: 'Ungültiger API-Schlüssel' });
-    }
-
+  if (token !== API_TOKEN) {
+    return res.status(401).json({ message: 'Ungültiger API-Schlüssel' });
+  }
 
   if (req.method === 'GET') {
     const dishes = await getDishesFromDB();
