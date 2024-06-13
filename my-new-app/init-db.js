@@ -11,7 +11,7 @@ const pool = new Pool({
   },
 });
 
-const createTable = async () => {
+const createTableAndInsertData = async () => {
   try {
     const client = await pool.connect();
     await client.query(`
@@ -24,12 +24,28 @@ const createTable = async () => {
         zutat3 VARCHAR(100)
       );
     `);
+
+    const insertQuery = `
+      INSERT INTO speisen (name, zutat1, zutat2, zutat3) VALUES
+      ('Spaghetti Bolognese', 'Spaghetti', 'Rinderhackfleisch', 'Tomatensauce'),
+      ('Caesar Salad', 'Römersalat', 'Hähnchenbrust', 'Caesar-Dressing'),
+      ('Margherita Pizza', 'Pizzateig', 'Tomatensauce', 'Mozzarella'),
+      ('Hühnchen Curry', 'Hühnchen', 'Kokosmilch', 'Currypaste'),
+      ('Lasagne', 'Lasagneplatten', 'Rinderhackfleisch', 'Béchamelsauce'),
+      ('Quiche Lorraine', 'Mürbeteig', 'Speck', 'Eier'),
+      ('Chili con Carne', 'Rinderhackfleisch', 'Bohnen', 'Tomaten'),
+      ('Griechischer Salat', 'Tomaten', 'Gurken', 'Feta'),
+      ('Risotto', 'Risottoreis', 'Weißwein', 'Parmesan'),
+      ('Tacos', 'Tortillas', 'Rinderhackfleisch', 'Salsa');
+    `;
+
+    await client.query(insertQuery);
+
     client.release();
-    console.log('Table created successfully');
+    console.log('Table created and data inserted successfully');
   } catch (error) {
-    console.error('Error creating table:', error);
+    console.error('Error creating table and inserting data:', error);
   }
 };
 
-createTable().then(() => pool.end());
-
+createTableAndInsertData().then(() => pool.end());

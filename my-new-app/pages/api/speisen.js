@@ -1,11 +1,11 @@
-import { Pool } from 'pg';
+const { Pool } = require('pg');
 
-// Pool-Konfiguration mit deinen Verbindungsdaten
+
 const pool = new Pool({
-  user: 'default',
-  host: 'ep-super-hall-a2oa0u4i-pooler.eu-central-1.aws.neon.tech',
-  database: 'verceldb',
-  password: 'TtmbaXeq50Rj',
+  user: process.env.NEXT_PUBLIC_POSTGRES_USER,
+  host: process.env.NEXT_PUBLIC_POSTGRES_HOST,
+  database: process.env.NEXT_PUBLIC_POSTGRES_DATABASE,
+  password: process.env.NEXT_PUBLIC_POSTGRES_PASSWORD,
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
@@ -40,26 +40,14 @@ const addDishToDB = async (name, zutat1, zutat2, zutat3) => {
 };
 
 export default async function handler(req, res) {
-  const API_TOKEN = process.env.API_TOKEN;
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-
-  if (token !== API_TOKEN) {
-    return res.status(401).json({ message: 'Ungültiger API-Schlüssel' });
-  }
-
   if (req.method === 'GET') {
-    const dishes = await getDishesFromDB();
-    res.status(200).json(dishes);
-  } else if (req.method === 'POST') {
-    const { name, zutat1, zutat2, zutat3 } = req.body;
-    const newDish = await addDishToDB(name, zutat1, zutat2, zutat3);
-    if (newDish) {
-      res.status(201).json({ message: 'Speise hinzugefügt', dish: newDish });
-    } else {
-      res.status(500).json({ message: 'Fehler beim Hinzufügen der Speise' });
-    }
+    pool.query('SELECT * FROM speisen', (error, results) => {
+      if (error) {
+        return res.status(500).json({ error });
+      }
+      res.status(200).json(results.rows);
+    });
   } else {
-    res.status(405).json({ message: 'Methode nicht erlaubt' });
+    // Handle other request methods
   }
 }
