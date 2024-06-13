@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const updateData = (id, updatedData) => {
-    fetch(`/api/speisen/${id}`, {
+    fetch(`/api/speisen?id=${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -36,10 +36,10 @@ export default function Home() {
   };
   
   const deleteData = (id) => {
-    fetch(`/api/speisen/${id}`, {
+    fetch(`/api/speisen?id=${id}`, {
       method: 'DELETE',
     })
-      .then(() => setData(oldData => oldData.filter(item => item.id !== id)));
+    .then(() => setData(oldData => oldData.filter(item => item.id !== id)));
   };
 
   const editData = (item) => {

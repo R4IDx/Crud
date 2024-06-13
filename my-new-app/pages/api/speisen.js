@@ -79,9 +79,6 @@ export default async function handler(req, res) {
       res.status(200).json(results.rows);
     });
 
-  
-
-
   }
   else if (req.method === 'POST') {
     const { name, zutat1, zutat2, zutat3 } = req.body;
@@ -90,42 +87,37 @@ export default async function handler(req, res) {
         console.error('Fehler beim Hinzufügen der Speise:', error);
         res.status(500).json({ error: 'Fehler beim Hinzufügen der Speise' });
       } else {
-        res.status(201).json({ message: 'Speise hinzugefügt' });
+        console.log('Speise hinzugefügt');
       }
     });
   }
 
-   else if (req.method === 'PUT') {
-    const dish = await updateDishInDB(req.body.id, req.body.name, req.body.zutat1, req.body.zutat2, req.body.zutat3);
-    if (dish) {
-      res.status(200).json(dish);
-    } else {
-      res.status(500).json({ error: 'Fehler beim Aktualisieren der Speise' });
-    }
 
-    
-  } else if (req.method === 'DELETE') {
-    const id = req.body.id;
-    pool.query('DELETE FROM speisen WHERE id = $1', [id], (error, results) => {
+
+
+
+
+
+
+  else if (req.method === 'PUT') {
+    const { id, name, zutat1, zutat2, zutat3 } = req.body;
+    pool.query('UPDATE speisen SET name = $1, zutat1 = $2, zutat2 = $3, zutat3 = $4 WHERE id = $5', [name, zutat1, zutat2, zutat3, id], (error, results) => {
       if (error) {
-        console.error('Fehler beim Löschen der Speise:', error);
-        res.status(500).json({ error: 'Fehler beim Löschen der Speise' });
+        console.error('Fehler beim Aktualisieren der Speise:', error);
+        res.status(500).json({ error: 'Fehler beim Aktualisieren der Speise' });
       } else {
-        if (results.rowCount > 0) {
-          res.status(200).json({ message: 'Speise gelöscht' });
-        } else {
-          res.status(404).json({ error: 'Speise nicht gefunden' });
-        }
+        res.status(200).json({ message: 'Speise aktualisiert' });
       }
     });
-      if (error) {
-        console.error('Fehler beim Löschen der Speise:', error);
-        res.status(500).json({ error: 'Fehler beim Löschen der Speise' });
+  } else if (req.method === 'DELETE') {
+  const id = req.query.id;
+  console.log('id:', id);
+  pool.query('DELETE FROM speisen WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      console.error('Fehler beim Löschen der Speise:', error);
+      res.status(500).json({ error: 'Fehler beim Löschen der Speise' });
     } else {
-      if (results.rowCount > 0) {
-        res.status(200).json({ message: 'Speise gelöscht' });
-    } else {
-      res.status(404).json({ error: 'Speise nicht gefunden' });
+      res.status(200).json({ message: 'Speise gelöscht' });
     }
-  } 
+  });
 }}
