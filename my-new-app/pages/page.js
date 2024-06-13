@@ -57,7 +57,7 @@ export default function Home() {
     } else {
       addData(editingItem);
     }
-    setEditingItem({ name: '', zutat1: '', zutat2: '', zutat3: '' });
+   setEditingItem({ name: '', zutat1: '', zutat2: '', zutat3: '' });
   };
 
   return (
@@ -75,7 +75,6 @@ export default function Home() {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Zutat1</th>
               <th>Zutat2</th>
@@ -86,13 +85,12 @@ export default function Home() {
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.zutat1}</td>
                 <td>{item.zutat2}</td>
                 <td>{item.zutat3}</td>
                 <td>
-                  <button onClick={() => updateData(item.id, item)}>Update</button>
+                  <button onClick={() => editData(item)}>Update</button>
                   <button onClick={() => deleteData(item.id)}>Delete</button>
                 </td>
               </tr>
