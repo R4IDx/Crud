@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./page.module.css";
+import Navbar from './navbar';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -63,7 +64,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-      <form onSubmit={handleSubmit}>
+        <div>
+          <Navbar />
+        </div>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input name="name" value={editingItem.name} onChange={handleInputChange} placeholder="Name" />
         <input name="zutat1" value={editingItem.zutat1} onChange={handleInputChange} placeholder="Zutat 1" />
         <input name="zutat2" value={editingItem.zutat2} onChange={handleInputChange} placeholder="Zutat 2" />
@@ -72,7 +76,7 @@ export default function Home() {
       </form>
 
 
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Name</th>

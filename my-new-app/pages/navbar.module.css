@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #7a7878;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    border-radius: 5px;
+  }
+  
+  .link {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .link:hover {
+    background-color: #ddd;
+    color: black;
+  }
