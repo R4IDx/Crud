@@ -92,13 +92,6 @@ export default async function handler(req, res) {
     });
   }
 
-
-
-
-
-
-
-
   else if (req.method === 'PUT') {
     const { id, name, carbs, protein, fat } = req.body;
     pool.query('UPDATE food SET name = $1, carbs = $2, protein = $3, fat = $4 WHERE id = $5', [name, carbs, protein, fat, id], (error, results) => {
