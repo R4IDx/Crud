@@ -94,7 +94,7 @@ export default function Home() {
                 <td>{item.protein}</td>
                 <td>{item.fat}</td>
                 <td>
-                  <button onClick={() => editData(item)}>Anpassen</button>
+                  <button onClick={() => editData(item)}>anpassen</button>
                   <button onClick={() => deleteData(item.id)}>entfernen</button>
                 </td>
               </tr>
