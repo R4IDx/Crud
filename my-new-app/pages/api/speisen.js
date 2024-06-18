@@ -15,21 +15,21 @@ const pool = new Pool({
 const getDishesFromDB = async () => {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM speisen');
+    const result = await client.query('SELECT * FROM food');
     client.release();
     return result.rows;
   } catch (error) {
-    console.error('Fehler beim Abrufen der Speisen:', error);
+    console.error('Fehler beim Abrufen der food:', error);
     return [];
   }
 };
 
-const addDishToDB = async (name, zutat1, zutat2, zutat3) => {
+const addDishToDB = async (name, carbs, protein, fat) => {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'INSERT INTO speisen (name, zutat1, zutat2, zutat3) VALUES ($1, $2, $3, $4) RETURNING *',
-      [name, zutat1, zutat2, zutat3]
+      'INSERT INTO food (name, carbs, protein, fat) VALUES ($1, $2, $3, $4) RETURNING *',
+      [name, carbs, protein, fat]
     );
     client.release();
     return result.rows[0];
@@ -40,12 +40,12 @@ const addDishToDB = async (name, zutat1, zutat2, zutat3) => {
 };
 
 
-const updateDishInDB = async (id, name, zutat1, zutat2, zutat3) => {
+const updateDishInDB = async (id, name, carbs, protein, fat) => {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'UPDATE speisen SET name = $1, zutat1 = $2, zutat2 = $3, zutat3 = $4 WHERE id = $5 RETURNING *',
-      [name, zutat1, zutat2, zutat3, id]
+      'UPDATE food SET name = $1, carbs = $2, protein = $3, fat = $4 WHERE id = $5 RETURNING *',
+      [name, carbs, protein, fat, id]
     );
     client.release();
     return result.rows[0];
@@ -59,7 +59,7 @@ const deleteDishFromDB = async (id) => {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'DELETE FROM speisen WHERE id = $1 RETURNING *',
+      'DELETE FROM food WHERE id = $1 RETURNING *',
       [id]
     );
     client.release();
@@ -72,7 +72,7 @@ const deleteDishFromDB = async (id) => {
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    pool.query('SELECT * FROM speisen', (error, results) => {
+    pool.query('SELECT * FROM food', (error, results) => {
       if (error) {
         return res.status(500).json({ error });
       }
@@ -81,8 +81,8 @@ export default async function handler(req, res) {
 
   }
   else if (req.method === 'POST') {
-    const { name, zutat1, zutat2, zutat3 } = req.body;
-    pool.query('INSERT INTO speisen (name, zutat1, zutat2, zutat3) VALUES ($1, $2, $3, $4)', [name, zutat1, zutat2, zutat3], (error, results) => {
+    const { name, carbs, protein, fat } = req.body;
+    pool.query('INSERT INTO food (name, carbs, protein, fat) VALUES ($1, $2, $3, $4)', [name, carbs, protein, fat], (error, results) => {
       if (error) {
         console.error('Fehler beim Hinzufügen der Speise:', error);
         res.status(500).json({ error: 'Fehler beim Hinzufügen der Speise' });
@@ -100,8 +100,8 @@ export default async function handler(req, res) {
 
 
   else if (req.method === 'PUT') {
-    const { id, name, zutat1, zutat2, zutat3 } = req.body;
-    pool.query('UPDATE speisen SET name = $1, zutat1 = $2, zutat2 = $3, zutat3 = $4 WHERE id = $5', [name, zutat1, zutat2, zutat3, id], (error, results) => {
+    const { id, name, carbs, protein, fat } = req.body;
+    pool.query('UPDATE food SET name = $1, carbs = $2, protein = $3, fat = $4 WHERE id = $5', [name, carbs, protein, fat, id], (error, results) => {
       if (error) {
         console.error('Fehler beim Aktualisieren der Speise:', error);
         res.status(500).json({ error: 'Fehler beim Aktualisieren der Speise' });
@@ -112,7 +112,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'DELETE') {
   const id = req.query.id;
   console.log('id:', id);
-  pool.query('DELETE FROM speisen WHERE id = $1', [id], (error, results) => {
+  pool.query('DELETE FROM food WHERE id = $1', [id], (error, results) => {
     if (error) {
       console.error('Fehler beim Löschen der Speise:', error);
       res.status(500).json({ error: 'Fehler beim Löschen der Speise' });

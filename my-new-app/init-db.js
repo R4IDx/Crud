@@ -15,28 +15,22 @@ const createTableAndInsertData = async () => {
   try {
     const client = await pool.connect();
     await client.query(`
-      DROP TABLE IF EXISTS speisen;
-      CREATE TABLE speisen (
+      DROP TABLE IF EXISTS food;
+      CREATE TABLE food (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        zutat1 VARCHAR(100) NOT NULL,
-        zutat2 VARCHAR(100),
-        zutat3 VARCHAR(100)
+        carbs NUMERIC NOT NULL,
+        protein NUMERIC,
+        fat NUMERIC
       );
     `);
 
     const insertQuery = `
-      INSERT INTO speisen (name, zutat1, zutat2, zutat3) VALUES
-      ('Spaghetti Bolognese', 'Spaghetti', 'Rinderhackfleisch', 'Tomatensauce'),
-      ('Caesar Salad', 'Römersalat', 'Hähnchenbrust', 'Caesar-Dressing'),
-      ('Margherita Pizza', 'Pizzateig', 'Tomatensauce', 'Mozzarella'),
-      ('Hühnchen Curry', 'Hühnchen', 'Kokosmilch', 'Currypaste'),
-      ('Lasagne', 'Lasagneplatten', 'Rinderhackfleisch', 'Béchamelsauce'),
-      ('Quiche Lorraine', 'Mürbeteig', 'Speck', 'Eier'),
-      ('Chili con Carne', 'Rinderhackfleisch', 'Bohnen', 'Tomaten'),
-      ('Griechischer Salat', 'Tomaten', 'Gurken', 'Feta'),
-      ('Risotto', 'Risottoreis', 'Weißwein', 'Parmesan'),
-      ('Tacos', 'Tortillas', 'Rinderhackfleisch', 'Salsa');
+      INSERT INTO food (name, carbs, protein, fat) VALUES
+      ('Coca Cola', 10.0, 0.0, 0.0),
+      ('Hamburger', 27.0, 13.0, 8.9),
+      ('Magerquark', 4.1, 13.0, 0.2)
+      
     `;
 
     await client.query(insertQuery);

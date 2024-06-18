@@ -4,7 +4,7 @@ import Navbar from './navbar';
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [editingItem, setEditingItem] = useState({ name: '', zutat1: '', zutat2: '', zutat3: '' });
+  const [editingItem, setEditingItem] = useState({ name: '', carbs: '', protein: '', fat: '' });
 
   useEffect(() => {
     fetch('/api/speisen')
@@ -58,7 +58,7 @@ export default function Home() {
     } else {
       addData(editingItem);
     }
-   setEditingItem({ name: '', zutat1: '', zutat2: '', zutat3: '' });
+   setEditingItem({ name: '', carbs: '', protein: '', fat: '' });
   };
 
   return (
@@ -69,9 +69,9 @@ export default function Home() {
         </div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input name="name" value={editingItem.name} onChange={handleInputChange} placeholder="Name" />
-        <input name="zutat1" value={editingItem.zutat1} onChange={handleInputChange} placeholder="Zutat 1" />
-        <input name="zutat2" value={editingItem.zutat2} onChange={handleInputChange} placeholder="Zutat 2" />
-        <input name="zutat3" value={editingItem.zutat3} onChange={handleInputChange} placeholder="Zutat 3" />
+        <input name="carbs" value={editingItem.carbs} onChange={handleInputChange} placeholder="Kohlenhydrate" />
+        <input name="protein" value={editingItem.protein} onChange={handleInputChange} placeholder="Proteine" />
+        <input name="fat" value={editingItem.fat} onChange={handleInputChange} placeholder="Fett" />
         <button type="submit">{editingItem.id ? 'Update' : 'Add'}</button>
       </form>
 
@@ -79,23 +79,23 @@ export default function Home() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Zutat1</th>
-              <th>Zutat2</th>
-              <th>Zutat3</th>
-              <th>Aktionen</th>
+              <th>Lebensmittel</th>
+              <th>Kohlenhydrate</th>
+              <th>Protein</th>
+              <th>Fett</th>
+              <th>bearbeiten</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>{item.zutat1}</td>
-                <td>{item.zutat2}</td>
-                <td>{item.zutat3}</td>
+                <td>{item.carbs}</td>
+                <td>{item.protein}</td>
+                <td>{item.fat}</td>
                 <td>
-                  <button onClick={() => editData(item)}>Update</button>
-                  <button onClick={() => deleteData(item.id)}>Delete</button>
+                  <button onClick={() => editData(item)}>Anpassen</button>
+                  <button onClick={() => deleteData(item.id)}>entfernen</button>
                 </td>
               </tr>
             ))}
