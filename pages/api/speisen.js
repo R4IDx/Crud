@@ -1,14 +1,12 @@
 const { Pool } = require('pg');
 
 
+const { Pool } = require('pg');
+
 const pool = new Pool({
-  user: process.env.NEXT_PUBLIC_POSTGRES_USER,
-  host: process.env.NEXT_PUBLIC_POSTGRES_HOST,
-  database: process.env.NEXT_PUBLIC_POSTGRES_DATABASE,
-  password: process.env.NEXT_PUBLIC_POSTGRES_PASSWORD,
-  port: 5432,
+  connectionString: process.env.POSTGRES_URL,
   ssl: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: true, // Sicherstellen, dass die Verbindung sicher ist
   },
 });
 
