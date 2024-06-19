@@ -70,46 +70,35 @@ const deleteDishFromDB = async (id) => {
 };
 
 export default async function handler(req, res) {
-  if (req.method === 'GET') {
-    pool.query('SELECT * FROM food', (error, results) => {
-      if (error) {
-        return res.status(500).json({ error });
-      }
-      res.status(200).json(results.rows);
-    });
-
-  }
-  else if (req.method === 'POST') {
-    const { name, carbs, protein, fat } = req.body;
-    pool.query('INSERT INTO food (name, carbs, protein, fat) VALUES ($1, $2, $3, $4)', [name, carbs, protein, fat], (error, results) => {
-      if (error) {
-        console.error('Fehler beim Hinzufügen der Speise:', error);
-        res.status(500).json({ error: 'Fehler beim Hinzufügen der Speise' });
+  try {
+    if (req.method === 'GET') {
+      const dishes = await getDishesFromDB();
+      res.status(200).json(dishes);
+    } else if (req.method === 'POST') {
+      const { name, carbs, protein, fat } = req.body;
+      const newDish = await addDishToDB(name, carbs, protein, fat);
+      res.status(201).json(newDish); // 201 Created
+    } else if (req.method === 'PUT') {
+      const { id, name, carbs, protein, fat } = req.body;
+      const updatedDish = await updateDishInDB(id, name, carbs, protein, fat);
+      if (updatedDish) {
+        res.status(200).json(updatedDish);
       } else {
-        console.log('Speise hinzugefügt');
+        res.status(404).json({ error: 'Speise nicht gefunden' });
       }
-    });
-  }
-
-  else if (req.method === 'PUT') {
-    const { id, name, carbs, protein, fat } = req.body;
-    pool.query('UPDATE food SET name = $1, carbs = $2, protein = $3, fat = $4 WHERE id = $5', [name, carbs, protein, fat, id], (error, results) => {
-      if (error) {
-        console.error('Fehler beim Aktualisieren der Speise:', error);
-        res.status(500).json({ error: 'Fehler beim Aktualisieren der Speise' });
+    } else if (req.method === 'DELETE') {
+      const id = req.query.id;
+      const deletedDish = await deleteDishFromDB(id);
+      if (deletedDish) {
+        res.status(200).json(deletedDish);
       } else {
-        res.status(200).json({ message: 'Speise aktualisiert' });
+        res.status(404).json({ error: 'Speise nicht gefunden' });
       }
-    });
-  } else if (req.method === 'DELETE') {
-  const id = req.query.id;
-  console.log('id:', id);
-  pool.query('DELETE FROM food WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      console.error('Fehler beim Löschen der Speise:', error);
-      res.status(500).json({ error: 'Fehler beim Löschen der Speise' });
     } else {
-      res.status(200).json({ message: 'Speise gelöscht' });
+      res.status(405).json({ error: 'Methode nicht erlaubt' });
     }
-  });
-}}
+  } catch (error) {
+    console.error('Fehler in der API-Route:', error);
+    res.status(500).json({ error: 'Ein Fehler ist aufgetreten' });
+  }
+}
