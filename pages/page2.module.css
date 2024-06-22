@@ -1,17 +1,471 @@
-.image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    width: 500px; 
-  }
-  
-  .description {
+/* Base Styles */
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Fredoka One', cursive;
+}
+
+/* Background Styles */
+.bg {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.body-img {
+    height: 100%;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Container Styles */
+.tfg {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.navbar {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 19%;
+    width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navbar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar p {
+    color: #A99C24;
+    font-weight: bold;
+    font-size: 29px;
+    padding: 1% 5%;
+    width: 100%;
     text-align: center;
-  }
-  .text {
-    font-size: 20px; 
-    width: 80%; 
-    margin: 0 auto;
-    white-space: pre-wrap; 
-  }
+    background-color: white;
+}
+
+.navbar img {
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+    object-fit: scale-down;
+}
+
+.navbar a {
+    color: #A99C24;
+    font-weight: bold;
+    font-size: 19px;
+    padding: 0.5% 1.8%;
+    width: 10%;
+    text-align: center;
+    border: solid 1px #A99C24;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: white;
+    margin-right: 30px;
+}
+
+/* Button Styles */
+.buttonContainer {
+        background-color: #A99C24;
+        display: flex;
+        justify-content: center;
+    }
+
+.button22 {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    background-color: #ffffff;
+}
+
+.button22:hover {
+    background-color: #eee;
+}
+
+/* Part Styles */
+.part1 {
+    background-color: black;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.part2 {
+    background-color: white;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.part2 > a {
+    margin-top: 1%;
+}
+
+.foods {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.foods img:hover {
+    animation: myAnim 2s ease 0s 1 normal forwards;
+    transform: translate(-29px, -7px) rotateX(119deg) rotateY(165deg) rotateZ(76deg);
+}
+
+.li {
+    font-size: 12px;
+    font-weight: 200;
+    text-align: start;
+    letter-spacing: 2px;
+}
+
+.h5 {
+    text-align: start;
+    color: #A99C24;
+}
+
+.bigbox h5,
+.bigbox ul {
+    margin: 12px;
+}
+
+.box_part2 {
+    width: 100%;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 1% 4%;
+    border: solid 2px #A99C24;
+    border-radius: 4px;
+    background-color: #f1eee1;
+    color: black;
+    height: 12vh;
+}
+
+.part2 a {
+    color: #A99C24;
+    font-weight: bold;
+    font-size: 19px;
+    padding: 0.5% 1.8%;
+    width: 10%;
+    text-align: center;
+    border: solid 1px #A99C24;
+    border-radius: 6px;
+    background-color: white;
+    margin-right: 30px;
+    text-decoration: none;
+}
+
+.mund,
+.speiseröhre,
+.magen,
+.dünndarm,
+.enddarm {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.mund {
+    background-image: url("/head.jpg");
+}
+
+.speiseröhre {
+    background-image: url("/meri.jpg");
+}
+
+.magen {
+    background-image: url("/med9.jpg");
+}
+
+.dünndarm {
+    background-image: url("/roode.jpg");
+}
+
+.enddarm {
+    background-image: url("/xd.jpg");
+}
+
+/* Box Styles */
+.box {
+    padding: 24px;
+    color: black;
+    width: 30vh;
+    height: 30vh;
+    margin-right: 5%;
+    background: rgba(117, 76, 76, 0.12);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.6px);
+    -webkit-backdrop-filter: blur(1.6px);
+    border: 1px solid rgba(117, 76, 76, 0.41);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+}
+
+.bigbox {
+    font-size: 18px;
+    padding: 24px;
+    color: black;
+    width: 30vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    background: rgb(141 107 107 / 10%);
+    border-radius: 5px;
+    border: 2px solid rgba(117, 76, 76);
+    margin: 3%;
+}
+
+p:not(.part1 > p, .box > p, .navbar p) {
+    margin-left: 5%;
+    margin-top: 40%;
+}
+
+/* Go-to Button Styles */
+.goto {
+    background-color: #A99C24;
+    font-weight: bold;
+    font-size: 20px;
+    width: 12%;
+    height: 7%;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+}
+
+.goto:hover {
+    background: #4e5b5a;
+    transition: ease-in .2s linear;
+    transition-delay: .6s;
+}
+
+/* Button Animation Keyframes */
+@keyframes myAnim {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+
+/* Custom Button Styles */
+.button--piyo {
+    --main_color: #f4cf47;
+    --sub_color1: #f4e19c;
+    --sub_color2: #ff8108;
+    --base_color: #000;
+    --border_radius1: 60px 60px 40px 40px / 48px 48px 30px 30px;
+    --border_radius2: 70px 70px 40px 40px / 48px 48px 30px 30px;
+    --border_radius3: 40px 40px 40px 40px / 48px 48px 30px 30px;
+}
+
+.button--hoo {
+    --main_color: #4993ff;
+    --sub_color1: #385082;
+    --sub_color2: #fff58f;
+    --sub_color3: #fff;
+    --base_color: #FFF;
+    --border_radius1: 50px 50px 50px 50px / 40px 40px 40px 40px;
+    --border_radius2: 60px 60px 50px 50px / 40px 40px 40px 40px;
+    --border_radius3: 30px 30px 50px 50px / 40px 40px 40px 40px;
+}
+
+.button--aylen {
+    --main_color: #4ff1a3;
+    --sub_color1: #7f8283;
+    --sub_color2: #edfcff;
+    --sub_color3: #54e9d1;
+    --base_color: #FFF;
+    --border_radius1: 50px 50px 50px 50px / 40px 40px 40px 40px;
+    --border_radius2: 60px 60px 50px 50px / 40px 40px 40px 40px;
+    --border_radius3: 30px 30px 50px 50px / 40px 40px 40px 40px;
+}
+
+/* General Button Styles */
+.button {
+    display: inline-block;
+    padding: 20px 30px;
+    text-decoration: none;
+    color: var(--base_color);
+    background-color: var(--main_color);
+    border-radius: var(--border_radius1);
+    position: relative;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.button:hover {
+    transform: translate3d(0, -2px, 0);
+}
+
+.button__wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.button__svg {
+    display: block;
+    width: 5rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: var(--sub_color1);
+    transition: transform 0.3s ease;
+}
+
+.button__svg--two {
+    transform: translate(-50%, -50%) scale(1.2);
+    fill: var(--sub_color2);
+    z-index: -1;
+    opacity: 0;
+}
+
+.button:hover .button__svg--one {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.button:hover .button__svg--two {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 1;
+}
+
+/* Specific Button Adjustments */
+.button--piyo {
+    color: var(--base_color);
+    background-color: var(--main_color);
+    border-radius: var(--border_radius1);
+}
+
+.button--hoo {
+    color: var(--base_color);
+    background-color: var(--main_color);
+    border-radius: var(--border_radius2);
+}
+
+.button--aylen {
+    color: var(--base_color);
+    background-color: var(--main_color);
+    border-radius: var(--border_radius3);
+}
+
+/* Box Container Styles */
+.container {
+    position: relative;
+}
+
+.box__svg {
+    display: block;
+    width: 15rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: var(--sub_color3);
+}
+
+.box__container {
+    position: relative;
+    padding: 2.4rem;
+    width: 100%;
+    max-width: 40rem;
+    border-radius: var(--border_radius2);
+    background-color: var(--main_color);
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.box__container:hover {
+    transform: translate3d(0, -2px, 0);
+}
+
+.box__container:hover .box__svg {
+    transform: translate(-50%, -50%) scale(1.2);
+}
