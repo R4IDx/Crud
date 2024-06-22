@@ -1,6 +1,7 @@
 import styles from "./page2.module.css";
 import Navbar from './navbar';
 import React from 'react';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -273,7 +274,7 @@ export default function Home() {
               <div className={styles.boxPart2}>
                 <h4>Try our food database if you want to learn more about nutrients</h4>
               </div>
-              <a href="/page">Food Database</a>
+              <Link href="/page">Food Database</Link>
             </div>
           </div>
         </div>
