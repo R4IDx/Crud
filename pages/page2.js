@@ -1,4 +1,4 @@
-import styles from "./Page2.module.css";
+import styles from "./page2.module.css";
 import Navbar from './navbar';
 import React from 'react';
 
