@@ -7,7 +7,7 @@ export default function Home() {
 
   useEffect(() => {
     // Sofortige Weiterleitung zur /page Seite
-    router.push('/page');
+    router.push('/page2');
   }, [router]);
 
   return (
