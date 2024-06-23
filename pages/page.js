@@ -64,14 +64,17 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <div>
-          <Navbar />
-        </div>
+        <div className={styles.container1}>
+          <h1 className={styles.title}>Food Database</h1>
+          <h2 className={styles.infobox}>Add, edit and delete food items</h2>
+       </div>
+
+       <div className={styles.container2}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input name="name" value={editingItem.name} onChange={handleInputChange} placeholder="Name" />
-        <input name="carbs" value={editingItem.carbs} onChange={handleInputChange} placeholder="Kohlenhydrate" />
-        <input name="protein" value={editingItem.protein} onChange={handleInputChange} placeholder="Proteine" />
-        <input name="fat" value={editingItem.fat} onChange={handleInputChange} placeholder="Fett" />
+        <input name="carbs" value={editingItem.carbs} onChange={handleInputChange} placeholder="Carbs" />
+        <input name="protein" value={editingItem.protein} onChange={handleInputChange} placeholder="Protein" />
+        <input name="fat" value={editingItem.fat} onChange={handleInputChange} placeholder="Fat" />
         <button type="submit">{editingItem.id ? 'Update' : 'Add'}</button>
       </form>
 
@@ -79,11 +82,11 @@ export default function Home() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Lebensmittel</th>
-              <th>Kohlenhydrate</th>
+              <th>Food</th>
+              <th>Carbs</th>
               <th>Protein</th>
-              <th>Fett</th>
-              <th>bearbeiten</th>
+              <th>Fat</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -94,13 +97,17 @@ export default function Home() {
                 <td>{item.protein}</td>
                 <td>{item.fat}</td>
                 <td>
-                  <button onClick={() => editData(item)}>anpassen</button>
-                  <button onClick={() => deleteData(item.id)}>entfernen</button>
+                <button onClick={() => editData(item)} className={styles.editButton}>Edit</button>
+                <button onClick={() => deleteData(item.id)} className={styles.deleteButton}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
+        <div>
+          <Navbar />
+        </div>
       </div>
     </main>
   );

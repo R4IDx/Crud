@@ -15,10 +15,7 @@
     position: relative;
 }
 
-.body-img {
-    height: 100%;
-    width: 100%;
-}
+
 
 .hidden {
     display: none;
@@ -55,7 +52,7 @@
     bottom: 0;
     left: 0;
     width: 0%;
-    height: 2px;
+    height: 1px;
     background-color: #000;
     transition: width 0.3s ease-in-out;
 }
@@ -84,7 +81,7 @@
     padding: 0.5% 1.8%;
     width: 10%;
     text-align: center;
-    border: solid 1px #A99C24;
+    border: solid 1px #FFDAB9;
     border-radius: 6px;
     text-decoration: none;
     background-color: white;
@@ -93,9 +90,10 @@
 
 /* Button Styles */
 .buttonContainer {
-        background-color: #A99C24;
+        background-color: #FFDAB9;
         display: flex;
         justify-content: center;
+        border : 1px solid;
     }
 
 .button22 {
@@ -120,19 +118,19 @@
     flex-direction: column;
     color: white;
     text-align: center;
-    font-size: 32px;
+    font-size: 31px;
     font-weight: bold;
 }
 
 .part2 {
-    background-color: white;
+    background-color: #FFDAB9;
     height: 40%;
     width: 100%;
     display: flex;
     flex-direction: column;
     color: black;
     text-align: center;
-    font-size: 32px;
+    font-size: 31px;
     font-weight: bold;
     align-items: center;
 }
@@ -155,20 +153,27 @@
 }
 
 .li {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 200;
     text-align: start;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .h5 {
     text-align: start;
-    color: #A99C24;
+    color: #FFDAB9;
 }
 
-.bigbox h5,
+.bigbox h5{
+    color: rgb(110, 110, 110);
+    font-weight: bolder;
+    text-decoration: underline;
+}
 .bigbox ul {
-    margin: 12px;
+    margin: 1px;
+    color: rgb(110, 110, 110);
+    font-size: 17px;
+    
 }
 
 .box_part2 {
@@ -177,7 +182,7 @@
     margin-left: 4%;
     margin-right: 4%;
     padding: 1% 4%;
-    border: solid 2px #A99C24;
+    border: solid 1px #A99C24;
     border-radius: 4px;
     background-color: #f1eee1;
     color: black;
@@ -185,15 +190,15 @@
 }
 
 .part2 a {
-    color: #A99C24;
+    color: rgb(110, 110, 110);
     font-weight: bold;
     font-size: 19px;
     padding: 0.5% 1.8%;
-    width: 10%;
+    width: 30%;
     text-align: center;
-    border: solid 1px #A99C24;
+    border: solid 1px rgb(110, 110, 110);
     border-radius: 6px;
-    background-color: white;
+    background-color: #FFDAB9;
     margin-right: 30px;
     text-decoration: none;
 }
@@ -215,25 +220,46 @@
     flex-direction: row-reverse;
 }
 
-.mund {
-    background-image: url("/head.jpg");
-}
-
-.speiseröhre {
-    background-image: url("/meri.jpg");
-}
-
-.magen {
-    background-image: url("/med9.jpg");
-}
-
-.dünndarm {
-    background-image: url("/roode.jpg");
-}
-
-.enddarm {
-    background-image: url("/xd.jpg");
-}
+.mund, .speiseröhre, .magen, .dünndarm, .enddarm {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .mund { background-image: url("/head.jpg"); }
+  .speiseröhre { background-image: url("/meri.jpg"); }
+  .magen { background-image: url("/med9.jpg"); }
+  .dünndarm { background-image: url("/roode.jpg"); }
+  .enddarm { background-image: url("/xd.jpg"); }
+  
+  .mund::before, .speiseröhre::before, .magen::before, .dünndarm::before, .enddarm::before,
+  .mund::after, .speiseröhre::after, .magen::after, .dünndarm::after, .enddarm::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100px; /* Passen Sie die Höhe des Fading-Effekts an */
+    pointer-events: none;
+  }
+  
+  /* Fading nach oben */
+  .mund::before, .speiseröhre::before, .magen::before, .dünndarm::before, .enddarm::before {
+    top: 0;
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
+  
+  /* Fading nach unten */
+  .mund::after, .speiseröhre::after, .magen::after, .dünndarm::after, .enddarm::after {
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
+  
+  /* Um sicherzustellen, dass der Inhalt über den Fading-Effekten bleibt */
+  .mund > *, .speiseröhre > *, .magen > *, .dünndarm > *, .enddarm > * {
+    position: relative;
+    z-index: 1;
+  }
 
 /* Box Styles */
 .box {
@@ -264,9 +290,9 @@
     height: 35vh;
     display: flex;
     flex-direction: column;
-    background: rgb(141 107 107 / 10%);
+    background: #FFDAB9;
     border-radius: 5px;
-    border: 2px solid rgba(117, 76, 76);
+    border: 1px solid black;
     margin: 3%;
 }
 
@@ -277,13 +303,14 @@ p:not(.part1 > p, .box > p, .navbar p) {
 
 /* Go-to Button Styles */
 .goto {
-    background-color: #A99C24;
+    background-color: #FFDAB9;
     font-weight: bold;
     font-size: 20px;
     width: 12%;
     height: 7%;
     text-align: center;
     border-radius: 6px;
+    border: solid 1px rgb(110, 110, 110);
     position: absolute;
     z-index: 3;
     top: 0;
@@ -291,11 +318,11 @@ p:not(.part1 > p, .box > p, .navbar p) {
     left: 0;
     right: 0;
     margin: auto;
-    color: white;
+    color: rgb(110, 110, 110);
 }
 
 .goto:hover {
-    background: #4e5b5a;
+    background: white;
     transition: ease-in .2s linear;
     transition-delay: .6s;
 }
@@ -379,7 +406,7 @@ p:not(.part1 > p, .box > p, .navbar p) {
 }
 
 .button:hover {
-    transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -1px, 0);
 }
 
 .button__wrapper {
@@ -463,9 +490,93 @@ p:not(.part1 > p, .box > p, .navbar p) {
 }
 
 .box__container:hover {
-    transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -1px, 0);
 }
 
 .box__container:hover .box__svg {
     transform: translate(-50%, -50%) scale(1.2);
 }
+
+.header{
+    background-color: #A99C24; /* Hintergrundfarbe für die Box */
+  border-top: 1px solid black; /* Schwarzer Rahmen */
+  border-radius: 5px; /* Abgerundete Ecken */
+  padding: 20px; /* Innenabstand */
+  display: flex;
+  flex-direction: column; /* Elemente untereinander anzeigen */
+  align-items: center; /* Elemente zentriert ausrichten */
+  background-image: linear-gradient(to bottom, #FFDAB9, #ffffff);
+  height: 200px;
+  color: rgb(110, 110, 110);
+}
+
+.banner {
+    background-color: #A99C24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    color: rgb(110, 110, 110);
+    font-size: 20px;
+    font-weight: bold;
+    height: 1000px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #ffffff, #FFDAB9, #FFDAB9, #ffffff);
+}   
+
+.bannerend {
+    background-color: #A99C24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    color: rgb(110, 110, 110);
+    font-size: 20px;
+    font-weight: bold;
+    height: 300px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #ffffff 60%, #FFDAB9 100%);
+}   
+
+
+.tfh {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bodyImg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tfh::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px; /* Anpassen je nach gewünschter Fade-Höhe */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
+
+  .boxPart2 {
+    background-color: #FFDAB9;
+    border : 1px solid;
+    width: 100%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .boxPart2 h4 {
+    color: rgb(110, 110, 110);
+  }
+
+
+  .speiseröhre .box, .magen .box, .dünndarm .box, .enddarm .box , .mund .box {
+    color: rgb(110, 110, 110);
+    background-color: rgba(255, 218, 185, 0.5);
+  }

@@ -1,5 +1,4 @@
 import styles from "./page2.module.css";
-import Navbar from './navbar';
 import React from 'react';
 import Link from 'next/link';
 
@@ -71,13 +70,19 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <div>
-          <Navbar />
-        </div>
         <div ref={myRef} className={styles.bg}>
           <div id='tbt'>
+            <section className={styles.header}>
+              <h1>Die Reise der Nahrung</h1>
+              <h3>Lerne in einer Reise durch das Verdauungssystem, deinen Körper kennen. Und Verstehe wie einzelne Prozesse im Körper dein Essen verdauen</h3>
+
+            </section>
             <section className={styles.tfh}>
               <img alt='body_img' className={styles.bodyImg} src="/2s.png"/>
+            </section>
+            <section className={styles.banner}>
+              <h3>Unsere erste Station führt uns zu Beginn in die Mundhöhle, scrolle weiter wenn du mehr erfahren möchtest</h3>
+
             </section>
 
             <section id="mund" className={styles.mund}>
@@ -109,9 +114,13 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
-                Beschreibung anzeigen 
+                Was passiert in der Mundhöhle? 
               </button>
               <p ref={myRef2} className={styles.hidden}> </p>
+            </section>
+            <section className={styles.banner}>
+              <h3>Nun hast du erfahren welche Aufgabe die Mundhöhle erfüllt, lass uns weiter scrollen um zu erfahren wie es weiter geht</h3>
+
             </section>
 
             <section id="speiseröhre" className={styles.speiseröhre}>
@@ -143,9 +152,13 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
-                Beschreibung anzeigen 
+                Zeige Infos der Speiseröhre! 
               </button>
               <p ref={myRef4} className={styles.hidden}></p>
+            </section>
+            <section className={styles.banner}>
+              <h3>Nachdem wir nun auch erfahren haben welche Funktion die Speiseröhre hat, ist unsere nächste Station der Magen</h3>
+
             </section>
 
             <section id="magen" className={styles.magen}>
@@ -177,9 +190,13 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
-                Beschreibung anzeigen 
+                Was tut der Magen?
               </button>
               <p ref={myRef6} className={styles.hidden}></p>
+            </section>
+            <section className={styles.banner}>
+              <h3>Unsere Nahrung hat sich auf unserem bisherigen Weg nun schon wesentlich verändert.</h3>
+
             </section>
 
             <section id="dünndarm" className={styles.dünndarm}>
@@ -211,10 +228,14 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
-                Beschreibung anzeigen 
+                Enddarm? was ist das ? 
               </button>
               <p ref={myRef9} className={styles.hidden}></p>
               <p ref={myRef8} className={styles.hidden}></p>
+            </section>
+            <section className={styles.banner}>
+              <h3>Im Dickdarm wurden unserer Nahrung alle restlichen Nährstoffe entzogen, nun folgt der Enddarm</h3>
+
             </section>
 
             <section id="enddarm" className={styles.enddarm}>
@@ -228,12 +249,15 @@ export default function Home() {
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick5('mund')}>
-                Beschreibung anzeigen 
+                Was passiert mit dem Rest? 
               </button>
               
             </section>
+            <section className={styles.bannerend}>
+              <h3>Unsere Nahrung wurde erfolgreich Verdaut. Wenn du nun zu einem bestimmten Punkt springen möchtest Klicke einfach auf einen der Button</h3>
+
+            </section>
             <section>
-            
               <div ref={myRefcc} className={`${styles.buttonContainer} ${styles.hidden}`}>
                 <button onClick={()=>jojego('mund')} className={styles.button22}>Mund</button>
                 <button onClick={()=>jojego('speiseröhre')} className={styles.button22}>Speiseröhre</button>
@@ -241,9 +265,10 @@ export default function Home() {
                 <button onClick={()=>jojego('dünndarm')} className={styles.button22}>Dünndarm</button>
               </div>
             </section>
+            
 
             <div className={styles.part2}>
-              <h4 style={{color:'#A99C24'}}>Zusammenfassung</h4>
+              <h1 style={{color:'rgb(110, 110, 110)'}}>Zusammenfassung</h1>
               <div className={styles.row}>
                 <div className={styles.bigbox} >
                   <h5>Was ist in der Mundhöhle passiert</h5>
@@ -272,9 +297,9 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.boxPart2}>
-                <h4>Try our food database if you want to learn more about nutrients</h4>
+                <h4>Sieh dir unsere Food Datenbank an und erfahre Nährwerte zu vielen Lebensmitteln</h4>
               </div>
-              <Link href="/page">Food Database</Link>
+              <Link href="/page">Food Datenbank</Link>
             </div>
           </div>
         </div>
