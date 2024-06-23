@@ -88,11 +88,9 @@ export default function Home() {
             <section id="mund" className={styles.mund}>
               <div ref={myRef1} className={`${styles.box} ${styles.hidden}`}>
                 <p>
-                  11111111111111Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare eu
-                  felis, lorem molestie. Ornare non nibh at duis nec vitae nisi semper
-                  duis. Id sapien egestas sit sit consequat. Aliquam lectus nunc
-                  pellentesque molestie ultrices elit suspendisse pellentesque. Volutpat
-                  ut fusce massa viverra sapien pulvinar rhoncus ullamcorper.
+                  Nahrungs tritt durch den Mund in den Verdauungskanal. Es wird von den Zähnen zerkleinert und mit Speichel vermischt.
+                  Der Speichel enthält Enzyme, die die Nahrung verdauen. Die Nahrung wird dann in den Rachen geschoben
+                  und in die Speiseröhre transportiert.
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick1('speiseröhre')}>
@@ -126,11 +124,8 @@ export default function Home() {
             <section id="speiseröhre" className={styles.speiseröhre}>
               <div ref={myRef3} className={`${styles.box} ${styles.hidden}`}>
                 <p>
-                  22222222222222Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare eu
-                  felis, lorem molestie. Ornare non nibh at duis nec vitae nisi semper
-                  duis. Id sapien egestas sit sit consequat. Aliquam lectus nunc
-                  pellentesque molestie ultrices elit suspendisse pellentesque. Volutpat
-                  ut fusce massa viverra sapien pulvinar rhoncus ullamcorper.
+                  Das fibromuskuläre Rohr, das die Nahrung vom Rachen in den Magen transportiert. Die Speiseröhre ist etwa 25 cm lang und verläuft hinter der Luftröhre.
+                  Die Nahrung wird mit einer wellenförmigen Bewegung, die als Peristaltik bezeichnet wird, in den Magen transportiert.
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick2('magen')}>
@@ -164,11 +159,8 @@ export default function Home() {
             <section id="magen" className={styles.magen}>
               <div ref={myRef5} className={`${styles.box} ${styles.hidden}`}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare eu
-                  felis, lorem molestie. Ornare non nibh at duis nec vitae nisi semper
-                  duis. Id sapien egestas sit sit consequat. Aliquam lectus nunc
-                  pellentesque molestie ultrices elit suspendisse pellentesque. Volutpat
-                  ut fusce massa viverra sapien pulvinar rhoncus ullamcorper.
+                  Der Magen ist das muskulöse Organ, das die Nahrung aufnimmt und verdaut. Der Magen hat die Form eines J-förmigen Beutels und liegt im oberen Bauchbereich.
+                  Nahrung wird im Magen gespeichert und durchmischt, bevor sie in den Dünndarm gelangt. Der Magen sezerniert Magensäure und Enzyme, die die Nahrung verdauen.
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick3('dünndarm')}>
@@ -202,11 +194,12 @@ export default function Home() {
             <section id="dünndarm" className={styles.dünndarm}>
               <div ref={myRef7} className={`${styles.box} ${styles.hidden}`}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare eu
-                  felis, lorem molestie. Ornare non nibh at duis nec vitae nisi semper
-                  duis. Id sapien egestas sit sit consequat. Aliquam lectus nunc
-                  pellentesque molestie ultrices elit suspendisse pellentesque. Volutpat
-                  ut fusce massa viverra sapien pulvinar rhoncus ullamcorper.
+                  Der Dünndarm ist das längste Segment des Verdauungstrakts und besteht aus drei Abschnitten: Duodenum, Jejunum und Ileum. Der Dünndarm ist der Hauptort für die Verdauung und Absorption von Nährstoffen.
+                  Der Dünndarm absorbiert die Nährstoffe aus der Nahrung und leitet sie in den Blutkreislauf. Der Dünndarm ist mit einer Vielzahl von Enzymen und Galle bedeckt, die die Nahrung verdauen.
+                </p>
+                <p>
+                  Der Dickdarm ist der vorletzte Abschnitt des Verdauungstrakts. Der Dickdarm ist etwa 15 cm lang und verbindet den Dünndarm mit dem Enddarm. Der Dickdarm ist der Hauptort für die Absorption von Wasser und Salzen.
+                  Der Dickdarm enthält Bakterien, die die Nahrung verdauen und die Nährstoffe in den Blutkreislauf leiten. Der Dickdarm speichert den Stuhl, bis er ausgeschieden wird.
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick4('enddarm')}>
@@ -228,7 +221,7 @@ export default function Home() {
                     </div>
                   </a>
                 </div>
-                Enddarm? was ist das ? 
+                Dünndarm? Dickdarm? was ist das ? 
               </button>
               <p ref={myRef9} className={styles.hidden}></p>
               <p ref={myRef8} className={styles.hidden}></p>
@@ -241,11 +234,8 @@ export default function Home() {
             <section id="enddarm" className={styles.enddarm}>
               <div ref={myRef10} className={`${styles.box} ${styles.hidden}`}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare eu
-                  felis, lorem molestie. Ornare non nibh at duis nec vitae nisi semper
-                  duis. Id sapien egestas sit sit consequat. Aliquam lectus nunc
-                  pellentesque molestie ultrices elit suspendisse pellentesque. Volutpat
-                  ut fusce massa viverra sapien pulvinar rhoncus ullamcorper.
+                  Der Enddarm ist der letzte Abschnitt des Verdauungstrakts. Der Enddarm ist etwa 15 cm lang und verbindet den Dickdarm mit dem Anus.
+                   Der Enddarm speichert den Stuhl, bis er ausgeschieden wird. Der Enddarm hat zwei Schließmuskeln, die den Stuhl im Enddarm halten.
                 </p>
               </div>
               <button className={styles.goto} onClick={() => handleClick5('mund')}>

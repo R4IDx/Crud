@@ -200,7 +200,6 @@
     border-radius: 6px;
     background-color: #FFDAB9;
     margin-right: 30px;
-    text-decoration: none;
 }
 
 .mund,
@@ -579,4 +578,5 @@ p:not(.part1 > p, .box > p, .navbar p) {
   .speiseröhre .box, .magen .box, .dünndarm .box, .enddarm .box , .mund .box {
     color: rgb(110, 110, 110);
     background-color: rgba(255, 218, 185, 0.5);
+    height: auto;
   }
