@@ -252,7 +252,7 @@ export default function Home() {
                 <button onClick={()=>jojego('mund')} className={styles.button22}>Mund</button>
                 <button onClick={()=>jojego('speiseröhre')} className={styles.button22}>Speiseröhre</button>
                 <button onClick={()=>jojego('magen')} className={styles.button22}>Magen</button>
-                <button onClick={()=>jojego('dünndarm')} className={styles.button22}>Dünndarm</button>
+                <button onClick={()=>jojego('dünndarm')} className={styles.button22}>Darm</button>
               </div>
             </section>
             
