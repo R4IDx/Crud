@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./page.module.css";
 import Navbar from './navbar';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // Importiere die FontAwesome CSS-Datei
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faPenToSquare);
+library.add(faTrash);
+
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -66,7 +75,7 @@ export default function Home() {
       <div className={styles.description}>
         <div className={styles.container1}>
           <h1 className={styles.title}>Food Database</h1>
-          <h2 className={styles.infobox}>Add, edit and delete food items</h2>
+          <h2 className={styles.infobox}>Willkommen bei unserer Lebensmittel Datenbank, hier kannst du Nährwerte zu verschiedensten Lebsnmitteln durchstöbern oder selbst welche hinzufügen!</h2>
        </div>
 
        <div className={styles.container2}>
@@ -82,11 +91,11 @@ export default function Home() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Food</th>
-              <th>Carbs</th>
+              <th>Lebensmittel</th>
+              <th>Kohlenhydrate</th>
               <th>Protein</th>
-              <th>Fat</th>
-              <th>Edit</th>
+              <th>Fett</th>
+              <th>bearbeiten/löschen</th>
             </tr>
           </thead>
           <tbody>
@@ -97,8 +106,12 @@ export default function Home() {
                 <td>{item.protein}</td>
                 <td>{item.fat}</td>
                 <td>
-                <button onClick={() => editData(item)} className={styles.editButton}>Edit</button>
-                <button onClick={() => deleteData(item.id)} className={styles.deleteButton}>Delete</button>
+                <button onClick={() => editData(item)} className={styles.editButton}>
+                <FontAwesomeIcon icon={faPenToSquare} /> 
+                </button>
+                <button onClick={() => deleteData(item.id)} className={styles.deleteButton}>
+                <FontAwesomeIcon icon={faTrash} /> 
+                 </button>
                 </td>
               </tr>
             ))}

@@ -73,7 +73,7 @@ export default function Home() {
         <div ref={myRef} className={styles.bg}>
           <div id='tbt'>
             <section className={styles.header}>
-              <h1>Die Reise der Nahrung</h1>
+              <h1>DIE REISE DURCH DEN VERDAUUNGSTRAKT</h1>
               <h3>Lerne in einer Reise durch das Verdauungssystem, deinen Körper kennen. Und Verstehe wie einzelne Prozesse im Körper dein Essen verdauen</h3>
 
             </section>
@@ -258,7 +258,7 @@ export default function Home() {
             
 
             <div className={styles.part2}>
-              <h1 style={{color:'rgb(110, 110, 110)'}}>Zusammenfassung</h1>
+              <h1 style={{color:'rgb(110, 110, 110)'}}>ZUSAMMENFASSUNG</h1>
               <div className={styles.row}>
                 <div className={styles.bigbox} >
                   <h5>Was ist in der Mundhöhle passiert</h5>
